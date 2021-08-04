@@ -22,5 +22,70 @@ namespace CitySelection.WebApi.Services
         public static double[] AnnualPM2_5Concentrations { get; set; } = new double[2] { 8.1, 20.1 };
         public static int[] CostOfLivingIndices { get; set; } = new int[2] { 42, 94 };
 
+        public static int GdpPerCapitaHigh
+        {
+            get => (GdpPerCapitas[0] + 2 * GdpPerCapitas[1]) / 3;
+        }
+        public static int GdpPerCapitaLow
+        {
+            get => (2 * GdpPerCapitas[0] + GdpPerCapitas[1]) / 3;
+        }
+        public static double InequalityIndexHigh
+        {
+            get => (InequalityIndices[0] + 2.0 * InequalityIndices[1]) / 3.0;
+        }
+        public static double InequalityIndexLow
+        {
+            get => (2.0 * InequalityIndices[0] + InequalityIndices[1]) / 3.0;
+        }
+        public static int RainyDaysHigh
+        {
+            get => (RainyDays[0] + 2 * RainyDays[1]) / 3;
+        }
+        public static int RainyDaysLow
+        {
+            get => (2 * RainyDays[0] + RainyDays[1]) / 3;
+        }
+        public static int MonthlySunshineHoursHigh
+        {
+            get => (MonthlySunshineHours[0] + 2 * MonthlySunshineHours[1]) / 3;
+        }
+        public static int MonthlySunshineHoursLow
+        {
+            get => (2 * MonthlySunshineHours[0] + MonthlySunshineHours[1]) / 3;
+        }
+        public static double Temperature24hAvgHighHigh
+        {
+            get => (Temperature24hAvgHighs[0] + 2.0 * Temperature24hAvgHighs[1]) / 3.0;
+        }
+        public static double Temperature24hAvgHighLow
+        {
+            get => (2.0 * Temperature24hAvgHighs[0] + Temperature24hAvgHighs[1]) / 3.0;
+        }
+        public static double Temperature24hAvgLowHigh
+        {
+            get => (Temperature24hAvgLows[0] + 2.0 * Temperature24hAvgLows[1]) / 3.0;
+        }
+        public static double Temperature24hAvgLowLow
+        {
+            get => (2.0 * Temperature24hAvgLows[0] + Temperature24hAvgLows[1]) / 3.0;
+        }
+        public static double AnnualPM2_5ConcentrationHigh
+        {
+            get => (AnnualPM2_5Concentrations[0] + 2.0 * AnnualPM2_5Concentrations[1]) / 3.0;
+        }
+        public static double AnnualPM2_5ConcentrationLow
+        {
+            get => (2.0 * AnnualPM2_5Concentrations[0] + AnnualPM2_5Concentrations[1]) / 3.0;
+        }
+        public static int CostOfLivingIndexHigh
+        {
+            get => (GdpPerCapitas[0] + 2 * GdpPerCapitas[1]) / 3;
+        }
+        public static int CostOfLivingIndexLow
+        {
+            get => (2 * CostOfLivingIndices[0] + CostOfLivingIndices[1]) / 3;
+        }
+
     }
 }

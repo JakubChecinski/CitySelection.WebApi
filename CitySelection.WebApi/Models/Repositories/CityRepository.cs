@@ -25,5 +25,13 @@ namespace CitySelection.WebApi.Models.Repositories
                 .Include(x => x.Climate.RainyDays)
                 .Include(x => x.Climate.MonthlySunshineHours);
         }
+
+        public City Get(int id)
+        {
+            return _context.Cities
+                .Include(x => x.Country.Name)
+                .First(x => x.Id == id);
+        }
+
     }
 }
