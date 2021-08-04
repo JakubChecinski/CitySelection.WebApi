@@ -2,6 +2,7 @@
 using CitySelection.WebApi.Models.Dtos;
 using CitySelection.WebApi.Models.Responses;
 using CitySelection.WebApi.Services;
+using CitySelection.WebApi.Models.Converters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,12 +23,12 @@ namespace CitySelection.WebApi.Controllers
         }
 
         [HttpPost]
-        public DataResponse<CityDto> Select()
+        public DataResponse<CityDto> Select(QueryParamsDto queryParams)
         {
             var response = new DataResponse<CityDto>();
             try
             {
-                response.Data = null;// cityService.Get()?.ToDto();
+                response.Data = _cityService.Select(queryParams.ToDao())?.ToDto();
             }
             catch (Exception e)
             {

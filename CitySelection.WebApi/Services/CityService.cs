@@ -1,8 +1,7 @@
 ﻿using CitySelection.WebApi.Models;
-using System;
-using System.Collections.Generic;
+using CitySelection.WebApi.Models.Domains;
+using CitySelection.WebApi.Models.Dtos;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CitySelection.WebApi.Services
 {
@@ -14,9 +13,10 @@ namespace CitySelection.WebApi.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void Get()
+        public City Select(QueryParams queryParams)
         {
-            _unitOfWork.Cities.Get();
+            var allCities = _unitOfWork.Cities.Get();
+            return new City();
         }
 
     }
