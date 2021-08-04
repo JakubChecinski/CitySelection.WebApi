@@ -17,19 +17,14 @@ namespace CitySelection.WebApi.Models.Repositories
         public IEnumerable<City> Get()
         {
             return _context.Cities
-                .Include(x => x.Country.Name)
-                .Include(x => x.Country.GdpPerCapita)
-                .Include(x => x.Country.InequalityIndex)
-                .Include(x => x.Climate.Temperature24hAvgHigh)
-                .Include(x => x.Climate.Temperature24hAvgLow)
-                .Include(x => x.Climate.RainyDays)
-                .Include(x => x.Climate.MonthlySunshineHours);
+                .Include(x => x.Country)
+                .Include(x => x.Climate);
         }
 
         public City Get(int id)
         {
             return _context.Cities
-                .Include(x => x.Country.Name)
+                .Include(x => x.Country)
                 .First(x => x.Id == id);
         }
 
