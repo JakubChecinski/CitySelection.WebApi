@@ -20,32 +20,37 @@ namespace CitySelection.WebApi.Services
         {
             var cities = _unitOfWork.Cities.Get().Select(x => x.ToCityAsCodes());
             cities = VerifyMandatoryConditions(cities, qp);
+            if (cities.Count() == 0) return null;
             return _unitOfWork.Cities.Get(
-                cities.OrderByDescending(x => CalculateDesirability(x, qp)).First().CityId);
+                cities.OrderBy(x => CalculateCompatibility(x, qp)).First().CityId);
         }
-        private IEnumerable<CityAsCodes> VerifyMandatoryConditions
-            (IEnumerable<CityAsCodes> cities, QueryParams qp)
+        private IEnumerable<CityAsCodes> VerifyMandatoryConditions(IEnumerable<CityAsCodes> cities, QueryParams qp)
         {
-            if (qp.GdpPerCapita[0] == 3) cities = cities.Where(x => x.GdpPerCapita == qp.GdpPerCapita[1]);
-            if (qp.InequalityIndex[0] == 3) cities = cities.Where(x => x.InequalityIndex == qp.InequalityIndex[1]);
-            if (qp.RainyDays[0] == 3) cities = cities.Where(x => x.RainyDays == qp.RainyDays[1]);
-            if (qp.MonthlySunshineHours[0] == 3) cities = cities.Where(x => x.MonthlySunshineHours == qp.MonthlySunshineHours[1]);
-            if (qp.Temperature24hAvgHigh[0] == 3) cities = cities.Where(x => x.Temperature24hAvgHigh == qp.Temperature24hAvgHigh[1]);
-            if (qp.Temperature24hAvgLow[0] == 3) cities = cities.Where(x => x.Temperature24hAvgLow == qp.Temperature24hAvgLow[1]);
-            if (qp.AnnualPM2_5Concentration[0] == 3) cities = cities.Where(x => x.AnnualPM2_5Concentration == qp.AnnualPM2_5Concentration[1]);
-            if (qp.CostOfLivingIndex[0] == 3) cities = cities.Where(x => x.CostOfLivingIndex == qp.CostOfLivingIndex[1]);
+            for (int i = 0; i < qp.CityParams.GetLength(0); i++)
+            {
+                // there is a LINQ issue where lazy evaluation sometimes gets too lazy 
+                // and doesn't evaluate Where conditions until the loop index is incremented to outside of bounds
+                // so this will result in an error:
+                // if (qp.CityParams[i, 0] == 3) cities = cities.Where(x => x.CityData[i] == qp.CityParams[i, 1]);
+                // i = 0, 1, ..., N-1: LINQ does nothing
+                // i = N, we exit the loop and return: now LINQ wakes up and wants to evaluate Where condition
+                // "Index was outside the bounds of the array."
+
+                // a really funny workaround is to decouple the query variable from the loop variable, like this:
+                var j = i;
+                if (qp.CityParams[j, 0] == 3) cities = cities.Where(x => x.CityData[j] == qp.CityParams[j, 1]);
+
+            }
             return cities;
         }
-        private int CalculateDesirability(CityAsCodes x, QueryParams qp)
+        private int CalculateCompatibility(CityAsCodes x, QueryParams qp)
         {
-            return qp.GdpPerCapita[0] * Math.Abs(x.GdpPerCapita - qp.GdpPerCapita[1]) +
-                qp.InequalityIndex[0] * Math.Abs(x.InequalityIndex - qp.InequalityIndex[1]) +
-                qp.RainyDays[0] * Math.Abs(x.RainyDays - qp.RainyDays[1]) +
-                qp.MonthlySunshineHours[0] * Math.Abs(x.MonthlySunshineHours - qp.MonthlySunshineHours[1]) +
-                qp.Temperature24hAvgHigh[0] * Math.Abs(x.Temperature24hAvgHigh - qp.Temperature24hAvgHigh[1]) +
-                qp.Temperature24hAvgLow[0] * Math.Abs(x.Temperature24hAvgLow - qp.Temperature24hAvgLow[1]) +
-                qp.AnnualPM2_5Concentration[0] * Math.Abs(x.AnnualPM2_5Concentration - qp.AnnualPM2_5Concentration[1]) +
-                qp.CostOfLivingIndex[0] * Math.Abs(x.CostOfLivingIndex - qp.CostOfLivingIndex[1]);
+            int compatiblityScore = 0;  // note: lower score is better
+            for (int i = 0; i < qp.CityParams.GetLength(0); i++)
+            {
+                compatiblityScore += qp.CityParams[i, 0] * Math.Abs(x.CityData[i] - qp.CityParams[i, 1]);
+            }
+            return compatiblityScore;
         }
 
     }
