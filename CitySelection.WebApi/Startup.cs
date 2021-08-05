@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CitySelection.WebApi.Services;
+using Microsoft.Extensions.Logging;
 
 namespace CitySelection.WebApi
 {
@@ -28,6 +29,9 @@ namespace CitySelection.WebApi
             services.AddScoped<CityService, CityService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddLogging(loggingBuilder => {
+                loggingBuilder.AddFile("app.logs", append: true);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

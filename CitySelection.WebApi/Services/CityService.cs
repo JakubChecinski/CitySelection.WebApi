@@ -36,21 +36,20 @@ namespace CitySelection.WebApi.Services
                 // i = N, we exit the loop and return: now LINQ wakes up and wants to evaluate Where condition
                 // "Index was outside the bounds of the array."
 
-                // a really funny workaround is to decouple the query variable from the loop variable, like this:
+                // a really funny solution is to decouple the query variable from the loop variable, like this:
                 var j = i;
                 if (qp.CityParams[j, 0] == 3) cities = cities.Where(x => x.CityData[j] == qp.CityParams[j, 1]);
-
             }
             return cities;
         }
         private int CalculateCompatibility(CityAsCodes x, QueryParams qp)
         {
-            int compatiblityScore = 0;  // note: lower score is better
+            int compatibilityScore = 0;  // note: lower score is better
             for (int i = 0; i < qp.CityParams.GetLength(0); i++)
             {
-                compatiblityScore += qp.CityParams[i, 0] * Math.Abs(x.CityData[i] - qp.CityParams[i, 1]);
+                compatibilityScore += qp.CityParams[i, 0] * Math.Abs(x.CityData[i] - qp.CityParams[i, 1]);
             }
-            return compatiblityScore;
+            return compatibilityScore;
         }
 
     }
