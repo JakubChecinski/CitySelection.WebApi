@@ -80,7 +80,7 @@ namespace CitySelection.WebApi.Controllers
         /// If the importance code is set to irrelevant, the preference code will be ignored.
         /// For the sake of clarity, it is recommended to use N/A (zero).
         /// </remarks>
-        [HttpPost]
+        [HttpGet]
         public DataResponse<CityDto> FindMostCompatible(QueryParamsDto queryParams)
         {
             var response = new DataResponse<CityDto>();

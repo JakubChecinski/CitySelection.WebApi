@@ -1,7 +1,0 @@
-2021-08-05T09:49:43.7359727+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
-2021-08-05T09:49:43.7485556+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
-2021-08-05T09:49:43.7486471+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\JCH\Desktop\Tang\week11\CitySelection.WebApi\CitySelection.WebApi
-2021-08-05T09:51:01.0271876+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Application started. Press Ctrl+C to shut down.
-2021-08-05T09:51:01.0374506+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Hosting environment: Development
-2021-08-05T09:51:01.0375373+02:00	INFO	[Microsoft.Hosting.Lifetime]	[0]	Content root path: C:\Users\JCH\Desktop\Tang\week11\CitySelection.WebApi\CitySelection.WebApi
-2021-08-05T09:51:07.7638664+02:00	FAIL	[CitySelection.WebApi.Controllers.CityController]	[0]	hh
