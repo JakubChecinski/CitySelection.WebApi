@@ -26,7 +26,7 @@ Example input:<br />
 &nbsp;&nbsp;"CostOfLivingIndexPreference" : 1<br />
 }<br />
 <br />
-The output JSON contains data about the most compatible EU city found (if any). Currently, the api contains only 8 example cities (Warsaw, Munich, Amsterdam, Dublin, Copenhagen, Lyon, Milan, Bucharest) for demonstrative purposes.<br />
+The output JSON contains data about the most compatible EU city found (if any). By default, the app data is populated with 8 example cities (Warsaw, Munich, Amsterdam, Dublin, Copenhagen, Lyon, Milan, Bucharest) for demonstrative purposes.<br />
 <br />
 Example output:<br />
 {<br />
