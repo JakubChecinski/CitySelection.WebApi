@@ -12,7 +12,5 @@ namespace CitySelection.WebApi.Models.Dtos
         public string Country { get; set; }
         public int Population { get; set; }
         public string WikipediaUrl { get; set; }
-
-
     }
 }
