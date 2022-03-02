@@ -8,36 +8,36 @@ Remarks: If the importance code is set to irrelevant, the preference code will b
 <br />
 Example input:<br />
 {<br />
-  "GdpPerCapitaImportance" : 2,<br />
-  "GdpPerCapitaPreference" : 2,<br />
-  "InequalityIndexImportance" : 1,<br />
-  "InequalityIndexPreference" : 1,<br />
-  "RainyDaysImportance" : 0,<br />
-  "RainyDaysPreference" : 0,<br />
-  "MonthlySunshineHoursImportance" : 1,<br />
-  "MonthlySunshineHoursPreference" : 3,<br />
-  "Temperature24hAvgHighImportance" : 1,<br />
-  "Temperature24hAvgHighPreference" : 1,<br />
-  "Temperature24hAvgLowImportance" : 2,<br />
-  "Temperature24hAvgLowPreference" : 1,<br />
-  "AnnualPM2_5ConcentrationImportance" : 3,<br />
-  "AnnualPM2_5ConcentrationPreference" : 1,<br />
-  "CostOfLivingIndexImportance" : 2,<br />
-  "CostOfLivingIndexPreference" : 1<br />
+&nbsp;&nbsp;"GdpPerCapitaImportance" : 2,<br />
+&nbsp;&nbsp;"GdpPerCapitaPreference" : 2,<br />
+&nbsp;&nbsp;"InequalityIndexImportance" : 1,<br />
+&nbsp;&nbsp;"InequalityIndexPreference" : 1,<br />
+&nbsp;&nbsp;"RainyDaysImportance" : 0,<br />
+&nbsp;&nbsp;"RainyDaysPreference" : 0,<br />
+&nbsp;&nbsp;"MonthlySunshineHoursImportance" : 1,<br />
+&nbsp;&nbsp;"MonthlySunshineHoursPreference" : 3,<br />
+&nbsp;&nbsp;"Temperature24hAvgHighImportance" : 1,<br />
+&nbsp;&nbsp;"Temperature24hAvgHighPreference" : 1,<br />
+&nbsp;&nbsp;"Temperature24hAvgLowImportance" : 2,<br />
+&nbsp;&nbsp;"Temperature24hAvgLowPreference" : 1,<br />
+&nbsp;&nbsp;"AnnualPM2_5ConcentrationImportance" : 3,<br />
+&nbsp;&nbsp;"AnnualPM2_5ConcentrationPreference" : 1,<br />
+&nbsp;&nbsp;"CostOfLivingIndexImportance" : 2,<br />
+&nbsp;&nbsp;"CostOfLivingIndexPreference" : 1<br />
 }<br />
 <br />
 The output JSON contains data about the most compatible EU city found (if any). Currently, the api contains only 8 example cities (Warsaw, Munich, Amsterdam, Dublin, Copenhagen, Lyon, Milan, Bucharest) for demonstrative purposes.<br />
 <br />
 Example output:<br />
 {<br />
-  "data": {<br />
-    "name": "München",<br />
-    "englishName": "Munich",<br />
-    "country": "Germany",<br />
-    "population": 2606,<br />
-    "wikipediaUrl": "https://en.wikipedia.org/wiki/Munich"<br />
-    },<br />
-    "errors": [],<br />
-    "isSuccess": true<br />
+&nbsp;&nbsp;"data": {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"name": "München",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"englishName": "Munich",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"country": "Germany",<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"population": 2606,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;"wikipediaUrl": "https://en.wikipedia.org/wiki/Munich"<br />
+&nbsp;&nbsp;},<br />
+&nbsp;&nbsp;"errors": [],<br />
+&nbsp;&nbsp;"isSuccess": true<br />
 }<br />
 
